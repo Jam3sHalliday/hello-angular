@@ -1,27 +1,63 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  OnDestroy,
+  AfterViewInit,
+  AfterViewChecked,
+  AfterContentChecked,
+  SimpleChanges
+} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   // templateUrl: './app.component.html',
   template: `
-    <h1
-      [ngStyle]="{color: textColor, background: backgroundColor1}"
-      [ngClass]="{
-        'with-border': withBorder,
-        'other-class': true
-      }"
-    >
+    <h1 [class.with-border]="withBorder" [style.color]="textColor">
       {{ title }}
     </h1>
-    <img [src]="imgSrc" />
+    <button (click)="onButtonClick()">
+      {{ withBorder ? 'Hide' : 'Show' }}
+    </button>
   `,
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title: string = 'Angula31r';
-  imgSrc: string = "https://picsum.photos/200";
+  title = "Hello";
+  imageSrc = "https://picsum.photos/200";
 
-  textColor = '#d23d12';
-  backgroundColor1 = "#f12f11";
+  textColor = "tomato";
   withBorder = true;
+
+  ngOnInit(): void {
+    console.log('OnInit')
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges', { changes });
+  }
+
+  ngOnDestroy(): void {
+    console.log("ngOnDestroy")
+  }
+
+  ngAfterViewInit(): void {
+    console.log("ngAfterViewInit")
+  }
+
+  ngAfterContentInit(): void {
+    console.log("ngAfterContentInit")
+  }
+
+  ngAfterViewChecked(): void {
+    console.log("ngAfterViewChecked")
+  }
+
+  ngAfterContentChecked(): void {
+    console.log("ngAfterContentChecked")
+  }
+
+  onButtonClick() {
+    this.withBorder = !this.withBorder;
+  }
 }
