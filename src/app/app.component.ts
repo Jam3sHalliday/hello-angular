@@ -19,10 +19,12 @@ import {
     <button (click)="onButtonClick()">
       {{ withBorder ? 'Hide' : 'Show' }}
     </button>
+
+    <app-hello [text]="title" (buttonClicked)="onButtonClickedFromHello($event)" ></app-hello>
   `,
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy, OnChanges, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentChecked {
   title = "Hello";
   imageSrc = "https://picsum.photos/200";
 
@@ -34,30 +36,36 @@ export class AppComponent {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('ngOnChanges', { changes });
+    // console.log('ngOnChanges', { changes });
   }
 
   ngOnDestroy(): void {
-    console.log("ngOnDestroy")
+    // console.log("ngOnDestroy")
   }
 
   ngAfterViewInit(): void {
-    console.log("ngAfterViewInit")
+    // console.log("ngAfterViewInit")
   }
 
   ngAfterContentInit(): void {
-    console.log("ngAfterContentInit")
+    // console.log("ngAfterContentInit")
   }
 
   ngAfterViewChecked(): void {
-    console.log("ngAfterViewChecked")
+    // console.log("ngAfterViewChecked")
   }
 
   ngAfterContentChecked(): void {
-    console.log("ngAfterContentChecked")
+    // console.log("ngAfterContentChecked")
   }
 
   onButtonClick() {
     this.withBorder = !this.withBorder;
+    this.title = "changed"
+  }
+
+  onButtonClickedFromHello(event: any) {
+    console.log('-------', event)
+    this.title = event;
   }
 }
