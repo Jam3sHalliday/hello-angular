@@ -21,11 +21,12 @@ import {
     </button>
 
     <app-hello [text]="title" (buttonClicked)="onButtonClickedFromHello($event)" ></app-hello>
+    <app-hi></app-hi>
   `,
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit, OnDestroy, OnChanges, OnDestroy, AfterViewInit, AfterViewChecked, AfterContentChecked {
-  title = "Hello";
+  title = "Helloz";
   imageSrc = "https://picsum.photos/200";
 
   textColor = "tomato";

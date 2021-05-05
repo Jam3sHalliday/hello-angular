@@ -12,6 +12,7 @@ import {
   Input,
   Output
 } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: "app-hello",
@@ -27,8 +28,12 @@ export class HelloComponent implements OnInit, OnDestroy, OnChanges, OnDestroy, 
   @Input() text: any;
   @Output() buttonClicked: EventEmitter<string> = new EventEmitter<string>();
 
+  constructor(private _dataService: DataService) {
+  }
+
   ngOnInit(): void {
-    console.log('child ngOnInit')
+    console.log('child ngOnInit', this._dataService.setTextFromHello(this.text))
+    this._dataService.setTextFromHello(this.text);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
