@@ -63,5 +63,6 @@ export class HelloComponent implements OnInit, OnDestroy, OnChanges, OnDestroy, 
   onButtonClicked(): void {
     this.text = "button clicked fron hello component"
     this.buttonClicked.emit(this.text);
+    this._dataService.setTextFromHello(this.text);
   }
 };
